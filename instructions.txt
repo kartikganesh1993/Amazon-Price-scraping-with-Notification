@@ -1,0 +1,53 @@
+`pip install -r requirements.txt`
+
+## Configuration
+Configuration is held in json format, `config.json` is used by default and has some configuration for reference, but a different file can be passed using the command li
+ne flags. you must set your email credentials. Required configuration:
+
+- `email` (dictionary) - this is the configuration for the email server and credentials to use for sending out the email.
+    - `smtp_url` - smtp server to use (default: smtp.gmail.com:587)
+    - `user` - the email address to be used for authentication
+    - `password` - the password to be used for authentication
+       
+
+- `base_url` (string) - the base amazon url of the product landing page; would differ if we look at .
+
+- `xpath_selector` (string) - the xpath selector of the element holding the price in the sale page, the default is true for all amazon variants that have been tested so
+ far (default: `//*[@id='priceblock_ourprice']`)
+
+- `items` (array) - an array of items, each item should be an array as follows:
+
+
+    `[amazon_ASIN, price_in_integer]`
+
+
+## Running the script
+
+```
+$ ./price-alert.py --help
+usage: price-alert.py [-h] [-c CONFIG] [-t POLL_INTERVAL]
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -c CONFIG, --config CONFIG
+                        Configuration file path
+  -t POLL_INTERVAL, --poll-interval POLL_INTERVAL
+                        Time in seconds between checks
+```
+
+when running without any arguments, the script will use `config.json` for configuration and the default polling interval of 30 seconds.
+
+### Other websites
+The script was tested on Amazon, so if you try running it on a different site make sure that `xpath_selector` is set correctly in the configuration json and that the price check itself is correct. Also dependent URL would also have different arguments to be passed.
+
+```
+
+#### Notification for now once sent removes the ASIN from the list . As per line 98 that is. If recurring roll over script is necessary to monitor products continuously it is best to comment this line.
+
+```
+
+##### Amazon Bots normally sweep every 15 mins as per online forums. Sleep time is adjustable. If every hour is the check time pass the argument -t and put in 3600 as the value.
+
+```
+
+###### This script also has the ability to be used to dump the data if need be . The printed data just would need to be transferred and saved into a file. As per the dumoing script same xpaths and same information thus can be obtained using one single script.`

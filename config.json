@@ -1,0 +1,13 @@
+{
+    "email": {
+        "smtp_url": "smtp.gmail.com:587",
+        "user": "kapoorrenu87@gmail.com",
+        "password": "headbutt99"
+    },
+    "base_url": "https://www.amazon.in/dp/",
+    "xpath_selector": "//*[@id='priceblock_ourprice']",
+    "items": [
+        ["B01KSZ4ILS",200],
+        ["B074V6CDWV",800]
+    ]
+}
